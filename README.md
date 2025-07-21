@@ -8,8 +8,6 @@
 
 La aplicación proporciona un servidor básico con endpoints simples y está configurada para pruebas usando _supertest_ y _chai_.
 
-<img src="./public/images/estructura simple-tests-passed.png" alt="Practicando conceptos básicos" width="50%">
-
 ---
 
 ## 🧰 Requisitos previos
@@ -26,40 +24,7 @@ La aplicación proporciona un servidor básico con endpoints simples y está con
 ```bash
 git clone https://github.com/JJUANVOLPE/backend-test.git
 cd backend-test
-Perfecto. A continuación te dejo el `README.md` con la sección de librerías movida al final, y un **enlace interno** agregado en la parte de instalación para que quien lea pueda consultar su descripción más adelante.
-
----
-
-````markdown
-<div align="center">
-
-# Proyecto Backend con Express
-
-</div>
-
-### Tecnologías utilizadas: _Express.js_ y _Mocha_ para realizar pruebas de los endpoints.
-
-La aplicación proporciona un servidor básico con endpoints simples y está configurada para pruebas usando _supertest_ y _chai_.
-
-<img src="./public/images/estructura simple-tests-passed.png" alt="Practicando conceptos básicos" width="50%">
-
----
-
-## 🧰 Requisitos previos
-
-- Node.js (v18 o superior recomendado)
-- npm (v9 o superior recomendado)
-
----
-
-## ⚙️ Instalación
-
-1. Clona este repositorio:
-
-```bash
-git clone https://github.com/JJUANVOLPE/backend-test.git
-cd backend-test
-````
+```
 
 2. Instala las dependencias necesarias:
 
@@ -73,7 +38,7 @@ npm install
 npm install express cors body-parser dotenv bcryptjs jsonwebtoken firebase-admin
 ```
 
-> ℹ️ Para conocer la función de cada una de estas librerías, consulta la sección: [📦 Descripción de dependencias](#-descripción-de-dependencias)
+> ℹ️ [📦 Descripción de dependencias](#-descripción-de-dependencias)
 
 ---
 
@@ -135,6 +100,134 @@ backend-test/
   "message": "Hello World"
 }
 ```
+
+* **Descripción**: Obtiene todos los productos públicos.
+* **Respuesta esperada**:
+
+```json
+[
+  { "id": "abc123", "name": "Laptop", "price": 1500, "stock": 10 },
+  { "id": "def456", "name": "Mouse", "price": 25, "stock": 100 }
+]
+```
+
+#### `POST /api/products` *(Requiere JWT)*
+
+* **Descripción**: Crea un nuevo producto.
+* **Encabezados requeridos**:
+
+```http
+Authorization: Bearer <token>
+```
+
+* **Cuerpo esperado**:
+
+```json
+{
+  "name": "Teclado",
+  "price": 40,
+  "stock": 80
+}
+```
+
+* **Respuesta esperada**:
+
+```json
+{ "id": "xyz789", "name": "Teclado", "price": 40, "stock": 80 }
+```
+
+---
+
+#### `PUT /api/products/:id` *(Requiere JWT)*
+
+* **Descripción**: Actualiza un producto existente por ID.
+* **Encabezados requeridos**:
+
+```http
+Authorization: Bearer <token>
+```
+
+* **Cuerpo esperado** (uno o más campos):
+
+```json
+{ "stock": 50 }
+```
+
+* **Respuesta esperada**:
+
+```json
+{ "message": "Producto actualizado correctamente" }
+```
+
+---
+
+#### `DELETE /api/products/:id` *(Requiere JWT)*
+
+* **Descripción**: Elimina un producto por ID.
+* **Encabezados requeridos**:
+
+```http
+Authorization: Bearer <token>
+```
+
+* **Respuesta esperada**:
+
+```json
+{ "message": "Producto eliminado correctamente" }
+```
+
+---
+
+### 🔐 Autenticación (`/api/login` y `/api/register`)
+
+#### `POST /api/login`
+
+* **Descripción**: Autentica un usuario y devuelve un token.
+* **Cuerpo esperado**:
+
+```json
+{
+  "email": "admin@site.com",
+  "password": "123456"
+}
+```
+
+* **Respuesta esperada**:
+
+```json
+{ "token": "..." }
+```
+
+---
+
+#### `POST /api/register`
+
+* **Descripción**: Registra un nuevo usuario.
+* **Cuerpo esperado**:
+
+```json
+{
+  "email": "nuevo@user.com",
+  "password": "123456",
+  "name": "Juan"
+}
+```
+
+* **Respuesta esperada**:
+
+```json
+{
+  "id": "abc123",
+  "email": "nuevo@user.com",
+  "name": "Juan"
+}
+```
+
+---
+
+## ✅ Próximo paso
+
+Si aún no implementaste `PUT /api/products/:id`, puedo ayudarte a integrarlo en tu modelo y controlador para completar la funcionalidad REST. ¿Te gustaría eso ahora?
 
 ---
 
