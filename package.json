@@ -1,0 +1,30 @@
+{
+  "name": "backend-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app/server.js",
+    "test": "node scripts/test.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.4.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/chai-http": "^4.2.4",
+    "chai": "^5.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^11.1.0",
+    "supertest": "^7.1.0"
+  }
+}
