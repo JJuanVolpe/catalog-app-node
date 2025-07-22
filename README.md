@@ -138,28 +138,7 @@ Authorization: Bearer <token>
 
 ---
 
-#### `PUT /api/products/:id` *(Requiere JWT)*
 
-* **Descripción**: Actualiza un producto existente por ID.
-* **Encabezados requeridos**:
-
-```http
-Authorization: Bearer <token>
-```
-
-* **Cuerpo esperado** (uno o más campos):
-
-```json
-{ "stock": 50 }
-```
-
-* **Respuesta esperada**:
-
-```json
-{ "message": "Producto actualizado correctamente" }
-```
-
----
 
 #### `DELETE /api/products/:id` *(Requiere JWT)*
 
@@ -225,11 +204,6 @@ Authorization: Bearer <token>
 
 ---
 
-## ✅ Próximo paso
-
-Si aún no implementaste `PUT /api/products/:id`, puedo ayudarte a integrarlo en tu modelo y controlador para completar la funcionalidad REST. ¿Te gustaría eso ahora?
-
----
 
 ## 🔒 Limitaciones
 
@@ -239,6 +213,7 @@ Si aún no implementaste `PUT /api/products/:id`, puedo ayudarte a integrarlo en
   * Manejo de errores centralizado.
   * Seguridad en la gestión de JWT y datos sensibles.
   * Pruebas más completas.
+  * Agregado de funcionalidades para la actualización de productos
 * No incluye base de datos persistente por defecto.
 
 ---
